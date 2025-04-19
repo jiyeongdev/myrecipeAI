@@ -1,0 +1,17 @@
+pytest==7.4.3
+python-dotenv==1.0.0
+diffusers
+transformers
+accelerate
+scipy
+safetensors
+opencv-python
+boto3
+openai
+sentencepiece
+sacremoses
+tqdm
+pandas
+numpy
+Pillow
+torch 

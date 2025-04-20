@@ -67,13 +67,13 @@ def main():
     start_time = time.time()
 
     ############################번역 & 이미지 생성할 행 지정 ################################
-    start_row = 0
-    end_row= 400
+    start_row = 715 # 해삼
+    end_row= 816
     ###################################################################################
   
 
     # 1. 번역 실행
-    translate_ingredients(start_row,end_row)
+    # translate_ingredients(start_row,end_row)
     
     # 2. 이미지 생성 실행
     generate_images(start_row, end_row)  # 179-181행 처리

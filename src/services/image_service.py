@@ -16,6 +16,7 @@ from src.utils.image_utils import (
     fix_white_background,
     get_unique_filename
 )
+from src.prompts import get_centered_img_prompt, get_cute_img_prompt, get_simple_img_prompt
 
 class ImageService:
     def __init__(self):
@@ -42,22 +43,15 @@ class ImageService:
 
     def generate_prompt(self, ingredient_name):
         """이미지 생성을 위한 프롬프트 생성"""
-        return f"""A perfectly centered {ingredient_name}, (centered composition:1.5), (symmetrical composition:1.3), 
-               professional food photography of a single {ingredient_name} on pure white background (255, 255, 255).
-               (centered:1.4), (dead center:1.3), (perfect symmetry:1.2), (top-down view:1.2).
-               The {ingredient_name} must be exactly in the middle of the frame.
-               Crystal clear focus, even studio lighting, no shadows.
-               (isolated object:1.3), (floating:1.2), (commercial product photography:1.2).
-               Absolutely no text, no watermarks, no additional objects.
-               High-end product photography, 8k, ultra sharp, professional lighting.
-               (white background:1.4), (minimalist:1.2), (clean:1.2).""".replace('\n', ' ').replace('  ', ' ')
+        # 중앙 배치 프롬프트 사용
+        return get_centered_img_prompt(ingredient_name)
+        
+        # 귀여운 스타일 프롬프트 사용
+        # return get_cute_img_prompt(ingredient_name)
+        
+        # 심플 프롬프트 사용
+        # return get_simple_img_prompt(ingredient_name)
 
-
-            # return f"A single centered {ingredient_name}, which is an edible food ingredient, exactly in the middle of the image, " \
-            #    "on a seamless pure white background. Perfect symmetry. " \
-            #    "Centered object. No cropping. No border touching. Full object in view. " \
-            #    "No other objects. No text. No shadow. No reflection. Even lighting. " \
-            #    "Top-down minimalist product photo. Sharp focus."
     def _save_error_filename(self, filename):
         """실패한 파일명을 error_save_file.txt에 추가"""
         # error_save_file.txt가 있는 디렉토리 생성
